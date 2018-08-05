@@ -1,7 +1,7 @@
 {
   "name": "timezoner-extension",
   "version": "0.1.0",
-  "private": true,
+  "author": "JavaScript Joe",
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -12,6 +12,10 @@
     "build": "react-scripts-parcel build",
     "test": "react-scripts-parcel test --env=jsdom",
     "eject": "react-scripts-parcel eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsjoeio/timezoner-extension"
   },
   "browserslist": {
     "development": [

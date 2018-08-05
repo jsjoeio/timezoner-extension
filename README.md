@@ -75,7 +75,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Shawn Wang** - *Initial work* - [sw-yx](https://github.com/sw-yx)
+* **Shawn Wang** - *Initial work* - [@sw-yx](https://github.com/sw-yx)
 He created `create-react-app-parcel` which served as a quick boilerplate for this project.
 ## License
 

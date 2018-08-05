@@ -1,5 +1,5 @@
 # Timezoner Chrome Extension
-A simple extension to coordinate across timezones. Input the date and time of your event and then we give you a link where others can view the event in their respective timezone. BOOM! Timezoning made easy 👏🏼
+A simple extension to help you coordinate across timezones. Input the date and time of your event and then we give you a link where others can view the event in their respective timezone. BOOM! Timezoning made easy 👏🏼
 
 ## Getting Started
 

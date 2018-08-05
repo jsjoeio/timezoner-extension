@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Button from './components/Button'
 import Input from './components/Input'
-import './App.css'
+import { appStyles, headerStyles } from './App.styles'
 
 class App extends Component {
   state = { toggle: true }
@@ -10,8 +10,8 @@ class App extends Component {
     const { toggle } = this.state
     const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className={appStyles}>
+        <header className={headerStyles}>
           <p>Your current timezone is</p>
           <h2>{currentTimezone}</h2>
         </header>

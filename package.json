@@ -1,22 +1,29 @@
 {
-  "name": "timezoner",
+  "name": "my-app",
   "version": "0.1.0",
-  "description": "A simple extension to help you coordinate across timezones.",
-  "main": "src/js/main.js",
-  "scripts": {
-    "build": "parcel build src/js/main.js -d src/build/ -o main.js",
-    "watch": "parcel watch src/js/main.js -d src/build/ -o main.js"
-  },
-  "author": "JavaScript Joe",
+  "private": true,
   "dependencies": {
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "parcel-bundler": "^1.6.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts-parcel": "0.0.24"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jsjoeio/timezoner-extension"
+  "scripts": {
+    "start": "react-scripts-parcel start",
+    "build": "react-scripts-parcel build",
+    "test": "react-scripts-parcel test --env=jsdom",
+    "eject": "react-scripts-parcel eject"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
   }
 }

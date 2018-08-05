@@ -76,7 +76,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Shawn Wang** - *Initial work* - [sw-yx](https://github.com/sw-yx)
-
+He created `create-react-app-parcel` which served as a quick boilerplate for this project.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/jsjoeio/timezoner-extension/blob/master/LICENSE.md) file for details

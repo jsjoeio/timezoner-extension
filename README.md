@@ -75,8 +75,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Atakan Goktepe** - *Initial work* - [atakangktepe](https://github.com/atakangktepe)
-I would like to credit Atakan because he created the boilerplate I used for this project.
+* **Shawn Wang** - *Initial work* - [sw-yx](https://github.com/sw-yx)
 
 ## License
 
@@ -84,4 +83,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 ## Acknowledgments
 
-* Hat tip to Atakan Goktepe who wrote this [Medium article](https://medium.freecodecamp.org/building-chrome-extensions-in-react-parcel-79d0240dd58f) and [boilerplate repo](https://github.com/atakangktepe/react-parcel-extension-boilerplate).
+* Hat tip to Shawn Wang who wrote created the boilerplate for  [`create-react-app-parcel`](https://medium.freecodecamp.org/building-chrome-extensions-in-react-parcel-79d0240dd58f) and [boilerplate repo](https://github.com/sw-yx/create-react-app-parcel).

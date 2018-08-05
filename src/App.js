@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Button from './components/Button'
 import Input from './components/Input'
-import './App.css'
 import { appStyles, headerStyles } from './App.styles'
 
 class App extends Component {

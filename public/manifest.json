@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Parcel Sample",
+  "short_name": "Timezoner",
+  "name": "Timezoner - Chrome Extension",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,6 +8,12 @@
       "type": "image/x-icon"
     }
   ],
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "React Ext"
+  },
+  "version": "1.0",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

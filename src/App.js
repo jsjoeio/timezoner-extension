@@ -18,7 +18,7 @@ class App extends Component {
         <main>
           <Input />
           <Input />
-          <Button />
+          <Button text="Generate Link"/>
         </main>
       </div>
     )

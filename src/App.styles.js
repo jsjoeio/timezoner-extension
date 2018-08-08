@@ -18,5 +18,11 @@ export const headerStyles = css`
         font-size: 32px;
         font-weight: 700;
         margin-top: 6px;
+        margin-bottom: 20px;
     }
+`
+
+export const formStyles = css`
+    display: flex;
+    justify-content: center;
 `

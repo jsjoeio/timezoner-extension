@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Button from './components/Button'
 import Input from './components/Input'
-import { appStyles, headerStyles } from './App.styles'
+import { appStyles, headerStyles, formStyles } from './App.styles'
 
 class App extends Component {
   state = { toggle: true }
@@ -16,8 +16,10 @@ class App extends Component {
           <h2>{currentTimezone}</h2>
         </header>
         <main>
-          <Input />
-          <Input />
+          <form className={formStyles}>
+            <Input type="date" label="Date"/>
+            <Input type="time"label="Time"/>
+          </form>
           <Button text="Generate Link"/>
         </main>
       </div>

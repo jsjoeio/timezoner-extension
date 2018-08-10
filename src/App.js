@@ -4,7 +4,21 @@ import Input from './components/Input'
 import { appStyles, headerStyles, formStyles } from './App.styles'
 
 class App extends Component {
-  state = { toggle: true }
+  state = {
+    date: '08-08-2018',
+    time: '12:00PM',
+    toggle: true
+  }
+
+  handleInputChange(event) {
+    const value = event.target.value
+    const name = target.name
+
+    this.setState({
+      [name]: value
+    })
+  }
+
   toggleToggle = () => this.setState({ toggle: !this.state.toggle })
   render() {
     const { toggle } = this.state
@@ -17,10 +31,22 @@ class App extends Component {
         </header>
         <main>
           <form className={formStyles}>
-            <Input type="date" label="Date"/>
-            <Input type="time"label="Time"/>
+            <Input
+              name="date"
+              type="date"
+              label="Date"
+              value={this.state.date}
+              onChange={this.handleInputChange}
+            />
+            <Input
+              name="time"
+              type="time"
+              label="Time"
+              value={this.state.time}
+              onChange={this.handleInputChange}
+            />
           </form>
-          <Button text="Generate Link"/>
+          <Button text="Generate Link" />
         </main>
       </div>
     )

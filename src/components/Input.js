@@ -4,7 +4,7 @@ class Input extends Component {
   render() {
     return (
       <div className={inputBoxStyles}>
-        <input type={this.props.type} />
+        <input name={this.props.name} type={this.props.type} value={this.props.value} onChange={this.props.onChange} />
         <label>{this.props.label}</label>
       </div>
     )

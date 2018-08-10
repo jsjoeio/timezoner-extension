@@ -1,27 +1,25 @@
 import React, { Component } from 'react'
 import Button from './components/Button'
 import Input from './components/Input'
+import DateInput from './components/DateInput'
 import { appStyles, headerStyles, formStyles } from './App.styles'
-
 class App extends Component {
   state = {
-    date: '08-08-2018',
     time: '12:00PM',
     toggle: true
   }
 
-  handleInputChange(event) {
+  handleTimeChange(event) {
     const value = event.target.value
-    const name = target.name
 
     this.setState({
-      [name]: value
+      time: value
     })
   }
 
   toggleToggle = () => this.setState({ toggle: !this.state.toggle })
   render() {
-    const { toggle } = this.state
+    const { selectedDay, toggle } = this.state
     const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
     return (
       <div className={appStyles}>
@@ -31,20 +29,14 @@ class App extends Component {
         </header>
         <main>
           <form className={formStyles}>
-            <Input
-              name="date"
-              type="date"
-              label="Date"
-              value={this.state.date}
-              onChange={this.handleInputChange}
-            />
-            <Input
+            <DateInput/>
+            {/* <Input
               name="time"
               type="time"
               label="Time"
               value={this.state.time}
-              onChange={this.handleInputChange}
-            />
+              onChange={this.handleTimeChange}
+            /> */}
           </form>
           <Button text="Generate Link" />
         </main>

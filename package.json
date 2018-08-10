@@ -5,6 +5,7 @@
   "dependencies": {
     "emotion": "^9.2.6",
     "react": "^16.4.2",
+    "react-day-picker": "^7.1.10",
     "react-dom": "^16.4.2",
     "react-scripts-parcel": "0.0.24"
   },

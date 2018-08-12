@@ -2,24 +2,26 @@ import React, { Component } from 'react'
 import Button from './components/Button'
 import Input from './components/Input'
 import DateInput from './components/DateInput'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
+
+import 'react-datepicker/dist/react-datepicker.css'
 import { appStyles, headerStyles, formStyles } from './App.styles'
 class App extends Component {
   state = {
-    time: '12:00PM',
+    startDate: moment(),
     toggle: true
   }
 
-  handleTimeChange(event) {
-    const value = event.target.value
-
+  handleChange = date => {
     this.setState({
-      time: value
+      startDate: date
     })
   }
 
   toggleToggle = () => this.setState({ toggle: !this.state.toggle })
   render() {
-    const { selectedDay, toggle } = this.state
+    const { startDate, toggle } = this.state
     const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
     return (
       <div className={appStyles}>
@@ -29,14 +31,17 @@ class App extends Component {
         </header>
         <main>
           <form className={formStyles}>
-            <DateInput/>
-            {/* <Input
-              name="time"
-              type="time"
-              label="Time"
-              value={this.state.time}
-              onChange={this.handleTimeChange}
-            /> */}
+            <div style={{marginRight: '175px'}}>
+              <DatePicker
+                selected={this.state.startDate}
+                onChange={this.handleChange}
+                showTimeSelect
+                timeFormat="HH:mm"
+                timeIntervals={15}
+                dateFormat="LLL"
+                timeCaption="time"
+              />
+            </div>
           </form>
           <Button text="Generate Link" />
         </main>

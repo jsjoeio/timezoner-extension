@@ -2,26 +2,31 @@ import React, { Component } from 'react'
 import Button from './components/Button'
 import Input from './components/Input'
 import DateInput from './components/DateInput'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
+import DayPickerInput from 'react-day-picker/DayPickerInput'
+import 'react-day-picker/lib/style.css'
 
-import 'react-datepicker/dist/react-datepicker.css'
+import MomentLocaleUtils, {
+  formatDate,
+  parseDate
+} from 'react-day-picker/moment'
+
 import { appStyles, headerStyles, formStyles } from './App.styles'
 class App extends Component {
   state = {
-    startDate: moment(),
+    selectedDay: undefined,
     toggle: true
   }
 
-  handleChange = date => {
+  handleChange = selectedDay => {
+    console.log(selectedDay)
     this.setState({
-      startDate: date
+      selectedDay
     })
   }
 
   toggleToggle = () => this.setState({ toggle: !this.state.toggle })
   render() {
-    const { startDate, toggle } = this.state
+    const { selectedDay, toggle } = this.state
     const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
     return (
       <div className={appStyles}>
@@ -31,15 +36,14 @@ class App extends Component {
         </header>
         <main>
           <form className={formStyles}>
-            <div style={{marginRight: '175px'}}>
-              <DatePicker
-                selected={this.state.startDate}
-                onChange={this.handleChange}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="LLL"
-                timeCaption="time"
+            <div style={{ marginRight: '175px' }}>
+              <DayPickerInput
+                formatDate={formatDate}
+                parseDate={parseDate}
+                placeholder={`${formatDate(new Date())}`}
+                value={selectedDay}
+                onDayChange={this.handleChange}
+                dayPickerProps={{ selectedDays: selectedDay }}
               />
             </div>
           </form>

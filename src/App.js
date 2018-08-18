@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
 import moment from 'moment'
+import { css } from 'emotion'
 import Button from './components/Button'
 import TimePicker from 'rc-time-picker'
 import 'react-day-picker/lib/style.css'
@@ -14,6 +15,7 @@ import MomentLocaleUtils, {
 import { appStyles, headerStyles, formStyles } from './App.styles'
 class App extends Component {
   state = {
+    link: '',
     selectedDay: undefined,
     time: moment()
       .hour(0)
@@ -30,30 +32,39 @@ class App extends Component {
   }
 
   generateLink = () => {
-    const { selectedDay, time } = this.state
-    const parsedDay = parseDay(selectedDay)
-    const parsedTime = parseTime(time)
-    const timezone = console.log(
-      `this is the link https://timezoner.com/?day=${parsedDay}&?time=${parsedTime}&?timezone=${timezone}`
-    )
+    const { selectedDay, time, timezone } = this.state
+    const day = formatDate(selectedDay)
+
+    const params = {
+      day,
+      time,
+      timezone
+    }
+
+    const queryString = Object.keys(params)
+      .map(key => {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
+      })
+      .join('&')
+
+    this.setState({
+      link: `https://timezoner.sh/${queryString}`
+    })
   }
   handleChange = selectedDay => {
-    console.log(selectedDay)
     this.setState({
       selectedDay
     })
   }
 
   handleTimeChange = time => {
-    console.log(time.format('h:mm a'))
     this.setState({
       time: time.format('h:mm a')
     })
   }
 
-  toggleToggle = () => this.setState({ toggle: !this.state.toggle })
   render() {
-    const { selectedDay, time, timezone, toggle } = this.state
+    const { link, selectedDay, time, timezone, toggle } = this.state
     const format = 'h:mm a'
     return (
       <div className={appStyles}>
@@ -86,8 +97,26 @@ class App extends Component {
               />
             </div>
           </form>
-          <Button text="Generate Link" />
+          <Button text="Generate Link" onClick={this.generateLink} />
         </main>
+        {link !== '' && (
+          <footer>
+            <div
+              className={css`
+                margin: 0 25px;
+              `}
+            >
+              <a
+                href={link}
+                className={css`
+                  word-wrap: break-word;
+                `}
+              >
+                <h4>{link}</h4>
+              </a>
+            </div>
+          </footer>
+        )}
       </div>
     )
   }

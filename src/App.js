@@ -14,13 +14,29 @@ import MomentLocaleUtils, {
 import { appStyles, headerStyles, formStyles } from './App.styles'
 class App extends Component {
   state = {
+    selectedDay: undefined,
     time: moment()
       .hour(0)
       .minute(0),
-    selectedDay: undefined,
+    timezone: '',
     toggle: true
   }
 
+  componentWillMount() {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    this.setState({
+      timezone
+    })
+  }
+
+  generateLink = () => {
+    const { selectedDay, time } = this.state
+    const parsedDay = parseDay(selectedDay)
+    const parsedTime = parseTime(time)
+    const timezone = console.log(
+      `this is the link https://timezoner.com/?day=${parsedDay}&?time=${parsedTime}&?timezone=${timezone}`
+    )
+  }
   handleChange = selectedDay => {
     console.log(selectedDay)
     this.setState({
@@ -37,15 +53,13 @@ class App extends Component {
 
   toggleToggle = () => this.setState({ toggle: !this.state.toggle })
   render() {
-    const { selectedDay, toggle } = this.state
-    const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    const { selectedDay, time, timezone, toggle } = this.state
     const format = 'h:mm a'
-    const now = (moment().hour(0).minute(0)).format(format)
     return (
       <div className={appStyles}>
         <header className={headerStyles}>
           <p>Your current timezone is</p>
-          <h2>{currentTimezone}</h2>
+          <h2>{timezone}</h2>
         </header>
         <main>
           <form className={formStyles}>
@@ -62,10 +76,10 @@ class App extends Component {
             <div>
               <TimePicker
                 showSecond={false}
-                defaultValue={this.state.now}
+                defaultValue={time}
                 onChange={this.handleTimeChange}
                 className="xxx"
-                placeholder={now}
+                placeholder={time}
                 format={format}
                 use12Hours
                 inputReadOnly

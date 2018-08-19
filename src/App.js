@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
 import moment from 'moment'
+import { css } from 'emotion'
 import Button from './components/Button'
 import TimePicker from 'rc-time-picker'
 import 'react-day-picker/lib/style.css'
@@ -14,38 +15,62 @@ import MomentLocaleUtils, {
 import { appStyles, headerStyles, formStyles } from './App.styles'
 class App extends Component {
   state = {
+    link: '',
+    selectedDay: undefined,
     time: moment()
       .hour(0)
       .minute(0),
-    selectedDay: undefined,
+    timezone: '',
     toggle: true
   }
 
+  componentWillMount() {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    this.setState({
+      timezone
+    })
+  }
+
+  generateLink = () => {
+    const { selectedDay, time, timezone } = this.state
+    const day = formatDate(selectedDay)
+
+    const params = {
+      day,
+      time,
+      timezone
+    }
+
+    const queryString = Object.keys(params)
+      .map(key => {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
+      })
+      .join('&')
+
+    this.setState({
+      link: `https://timezoner.sh/${queryString}`
+    })
+  }
   handleChange = selectedDay => {
-    console.log(selectedDay)
     this.setState({
       selectedDay
     })
   }
 
   handleTimeChange = time => {
-    console.log(time.format('h:mm a'))
     this.setState({
       time: time.format('h:mm a')
     })
   }
 
-  toggleToggle = () => this.setState({ toggle: !this.state.toggle })
   render() {
-    const { selectedDay, toggle } = this.state
-    const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    const { link, selectedDay, time, timezone, toggle } = this.state
     const format = 'h:mm a'
-    const now = (moment().hour(0).minute(0)).format(format)
     return (
       <div className={appStyles}>
         <header className={headerStyles}>
           <p>Your current timezone is</p>
-          <h2>{currentTimezone}</h2>
+          <h2>{timezone}</h2>
         </header>
         <main>
           <form className={formStyles}>
@@ -62,18 +87,36 @@ class App extends Component {
             <div>
               <TimePicker
                 showSecond={false}
-                defaultValue={this.state.now}
+                defaultValue={time}
                 onChange={this.handleTimeChange}
                 className="xxx"
-                placeholder={now}
+                placeholder={time}
                 format={format}
                 use12Hours
                 inputReadOnly
               />
             </div>
           </form>
-          <Button text="Generate Link" />
+          <Button text="Generate Link" onClick={this.generateLink} />
         </main>
+        {link !== '' && (
+          <footer>
+            <div
+              className={css`
+                margin: 0 25px;
+              `}
+            >
+              <a
+                href={link}
+                className={css`
+                  word-wrap: break-word;
+                `}
+              >
+                <h4>{link}</h4>
+              </a>
+            </div>
+          </footer>
+        )}
       </div>
     )
   }

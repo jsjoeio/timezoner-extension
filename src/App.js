@@ -43,12 +43,12 @@ class App extends Component {
 
     const queryString = Object.keys(params)
       .map(key => {
-        return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
+        return `?${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
       })
       .join('&')
 
     this.setState({
-      link: `https://timezoner.sh/${queryString}`
+      link: `http://localhost:8000/${queryString}`
     })
   }
   handleChange = selectedDay => {
@@ -108,6 +108,7 @@ class App extends Component {
             >
               <a
                 href={link}
+                target="_blank"
                 className={css`
                   word-wrap: break-word;
                 `}

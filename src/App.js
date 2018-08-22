@@ -48,7 +48,7 @@ class App extends Component {
       .join('&')
 
     this.setState({
-      link: `http://localhost:8000/${queryString}`
+      link: `https://timezoner.surge.sh/${queryString}`
     })
   }
   handleChange = selectedDay => {

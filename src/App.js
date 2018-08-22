@@ -33,7 +33,7 @@ class App extends Component {
 
   generateLink = () => {
     const { selectedDay, time, timezone } = this.state
-    const day = formatDate(selectedDay)
+    const day = formatDate(selectedDay, 'YYYY-MM-DD')
 
     const params = {
       day,
@@ -77,7 +77,7 @@ class App extends Component {
             <div>
               <DayPickerInput
                 formatDate={formatDate}
-                parseDate={parseDate}
+                // parseDate={parseDate}
                 placeholder={`${formatDate(new Date())}`}
                 value={selectedDay}
                 onDayChange={this.handleChange}

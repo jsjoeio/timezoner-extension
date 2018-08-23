@@ -1,15 +1,20 @@
 {
-  "name": "Timezoner",
   "manifest_version": 2,
-  "description": "A simple extension to help you coordinate across timezones",
+  "name": "Timezoner",
   "version": "1.0",
-  "browser_action": {
-    "default_icon": "favicon.ico",
-    "default_popup": "index.html",
-    "default_title": "React Ext"
+  "description": "A simple extension to help you coordinate across timezones",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   },
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "browser_action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_title": "Timezoner",
+    "default_popup": "index.html"
+  }
 }

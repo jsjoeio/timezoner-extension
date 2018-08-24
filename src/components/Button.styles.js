@@ -15,7 +15,7 @@ export const buttonStyles = css`
   transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   height: 49px;
   width: 167px;
-  :hover {
+  &:hover, &:active {
     background: linear-gradient(
       0deg,
       rgba(42, 183, 248, 0.85) 27.3%,

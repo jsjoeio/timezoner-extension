@@ -5,24 +5,42 @@ export const appStyles = css`
   min-height: 350px;
   background-color: #fff;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 0px 24px 24px;
   text-align: center;
 `
 export const headerStyles = css`
-    p {
-        margin-top: 37px;
-        margin-bottom: 0;
-    }
+  p {
+    margin-top: 37px;
+    margin-bottom: 0;
+  }
 
-    h2 {
-        font-size: 32px;
-        font-weight: 700;
-        margin-top: 6px;
-        margin-bottom: 20px;
-    }
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 6px;
+    margin-bottom: 20px;
+  }
 `
 
 export const formStyles = css`
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+
+  input {
+    border: 1px solid #aaaaaa;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-size: 13px;
+    padding: 8px 0px;
+    width: 140px;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+      border: 2px solid #00a6f3;
+    }
+  }
+
+  div.rdtPicker {
+    left: -25%;
+  }
 `

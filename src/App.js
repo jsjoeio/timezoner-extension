@@ -1,27 +1,17 @@
 import React, { Component } from 'react'
-import DayPickerInput from 'react-day-picker/DayPickerInput'
-import moment from 'moment'
 import { css } from 'emotion'
+import DateTime from 'react-datetime'
 import Button from './components/Button'
-import TimePicker from 'rc-time-picker'
-import 'react-day-picker/lib/style.css'
-import 'rc-time-picker/assets/index.css'
-
-import MomentLocaleUtils, {
-  formatDate,
-  parseDate
-} from 'react-day-picker/moment'
-
+import 'react-datetime/css/react-datetime.css'
 import { appStyles, headerStyles, formStyles } from './App.styles'
+import { CLIENT_RENEG_LIMIT } from 'tls'
 class App extends Component {
   state = {
     link: '',
-    selectedDay: undefined,
-    time: moment()
-      .hour(0)
-      .minute(0),
-    timezone: '',
-    toggle: true
+    date: new Date(),
+    day: '',
+    time: '',
+    timezone: ''
   }
 
   componentWillMount() {
@@ -32,9 +22,7 @@ class App extends Component {
   }
 
   generateLink = () => {
-    const { selectedDay, time, timezone } = this.state
-    const day = formatDate(selectedDay, 'YYYY-MM-DD')
-
+    const { day, time, timezone } = this.state
     const params = {
       day,
       time,
@@ -51,21 +39,23 @@ class App extends Component {
       link: `https://timezoner.surge.sh/${queryString}`
     })
   }
-  handleChange = selectedDay => {
+
+  handleChange = date => {
     this.setState({
-      selectedDay
+      date
     })
   }
 
-  handleTimeChange = time => {
+  setDateAndTime = date => {
     this.setState({
-      time: time.format('h:mm a')
+      day: date.format('YYYY-MM-DD'),
+      time: date.format('h:mm a')
     })
   }
 
   render() {
-    const { link, selectedDay, time, timezone, toggle } = this.state
-    const format = 'h:mm a'
+    const { link, date, timezone } = this.state
+
     return (
       <div className={appStyles}>
         <header className={headerStyles}>
@@ -75,29 +65,15 @@ class App extends Component {
         <main>
           <form className={formStyles}>
             <div>
-              <DayPickerInput
-                formatDate={formatDate}
-                // parseDate={parseDate}
-                placeholder={`${formatDate(new Date())}`}
-                value={selectedDay}
-                onDayChange={this.handleChange}
-                dayPickerProps={{ selectedDays: selectedDay }}
-              />
-            </div>
-            <div>
-              <TimePicker
-                showSecond={false}
-                defaultValue={time}
-                onChange={this.handleTimeChange}
-                className="xxx"
-                placeholder={time}
-                format={format}
-                use12Hours
-                inputReadOnly
+              <DateTime
+                onChange={this.handleChange}
+                onBlur={this.setDateAndTime}
+                value={date}
+                timeFormat="h:mm a"
               />
             </div>
           </form>
-          <Button text="Generate Link" onClick={this.generateLink} />
+          <Button text="Generate Link" onClick={this.generateLink}/>
         </main>
         {link !== '' && (
           <footer>

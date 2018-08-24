@@ -22,10 +22,25 @@ export const headerStyles = css`
 `
 
 export const formStyles = css`
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    div.rdtPicker {
-        left: -50%;
+  input {
+    border: 1px solid #aaaaaa;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-size: 13px;
+    padding: 8px 0px;
+    width: 140px;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+      border: 2px solid #00a6f3;
     }
+  }
+
+  div.rdtPicker {
+    left: -25%;
+  }
 `

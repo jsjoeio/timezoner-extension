@@ -15,7 +15,8 @@ export const buttonStyles = css`
   transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   height: 49px;
   width: 167px;
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background: linear-gradient(
       0deg,
       rgba(42, 183, 248, 0.85) 27.3%,
@@ -23,5 +24,9 @@ export const buttonStyles = css`
     );
     cursor: pointer;
     transform: translate(0, 1px) scale(1.1, 1.1);
+  }
+  &:focus {
+    outline: none;
+    border: 3px solid #00a6f3;
   }
 `

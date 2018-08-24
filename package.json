@@ -5,9 +5,8 @@
   "dependencies": {
     "emotion": "^9.2.6",
     "moment": "^2.22.2",
-    "rc-time-picker": "^3.4.0",
     "react": "^16.4.2",
-    "react-day-picker": "^7.1.10",
+    "react-datetime": "^2.15.0",
     "react-dom": "^16.4.2",
     "react-scripts-parcel": "0.0.24"
   },

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import moment from 'moment'
 import { css } from 'emotion'
 import DateTime from 'react-datetime'
 import Button from './components/Button'
@@ -40,6 +39,7 @@ class App extends Component {
       link: `https://timezoner.surge.sh/${queryString}`
     })
   }
+
   handleChange = date => {
     this.setState({
       date,
@@ -50,6 +50,7 @@ class App extends Component {
 
   render() {
     const { link, date, timezone } = this.state
+
     return (
       <div className={appStyles}>
         <header className={headerStyles}>

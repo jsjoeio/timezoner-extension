@@ -8,20 +8,24 @@ export const appStyles = css`
   text-align: center;
 `
 export const headerStyles = css`
-    p {
-        margin-top: 37px;
-        margin-bottom: 0;
-    }
+  p {
+    margin-top: 37px;
+    margin-bottom: 0;
+  }
 
-    h2 {
-        font-size: 32px;
-        font-weight: 700;
-        margin-top: 6px;
-        margin-bottom: 20px;
-    }
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 6px;
+    margin-bottom: 20px;
+  }
 `
 
 export const formStyles = css`
     display: flex;
     justify-content: center;
+
+    div.rdtPicker {
+        left: -50%;
+    }
 `

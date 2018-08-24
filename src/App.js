@@ -42,7 +42,12 @@ class App extends Component {
 
   handleChange = date => {
     this.setState({
-      date,
+      date
+    })
+  }
+
+  setDateAndTime = date => {
+    this.setState({
       day: date.format('YYYY-MM-DD'),
       time: date.format('h:mm a')
     })
@@ -62,12 +67,13 @@ class App extends Component {
             <div>
               <DateTime
                 onChange={this.handleChange}
+                onBlur={this.setDateAndTime}
                 value={date}
                 timeFormat="h:mm a"
               />
             </div>
           </form>
-          <Button text="Generate Link" onClick={this.generateLink} />
+          <Button text="Generate Link" onClick={this.generateLink}/>
         </main>
         {link !== '' && (
           <footer>

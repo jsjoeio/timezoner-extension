@@ -45,7 +45,6 @@ class App extends Component {
   }
 
   handleChange = date => {
-    console.log(date)
     this.setState({
       date,
       link: ''

@@ -37,16 +37,14 @@ class App extends Component {
     const queryString = generateQueryString(params)
     const url = `https://timezoner.surge.sh/${queryString}`
     const options = {
-      url: 'https://api-ssl.bitly.com/v4/shorten',
       headers: {
-        Authorization: 'Bearer 8705ea2b0a33b18fe75164b1a8a87a671b3f9dcb',
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      timeout: 1500
+      timeout: 5000
     }
     const bitlink = await getBitlink(url, options)
-
+    console.log(bitlink)
     this.setState({
       link: bitlink
     })

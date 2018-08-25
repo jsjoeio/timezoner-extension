@@ -11,16 +11,14 @@ export const generateQueryString = params => {
 export const getBitlink = (url, options) => {
   return axios
     .post(
-      'https://api-ssl.bitly.com/v4/shorten',
+      'https://timezoner-server.now.sh/api/bitly/',
       {
-        group_guid: 'Bhcedh2pCq5',
-        domain: 'bit.ly',
         long_url: url
       },
       options
     )
     .then(function(response) {
-      return response.data.link
+      return response.data
     })
     .catch(function(error) {
       console.log(error)

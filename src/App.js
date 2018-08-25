@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { css } from 'emotion'
 import DateTime, { moment } from 'react-datetime'
+
 import Button from './components/Button'
 import 'react-datetime/css/react-datetime.css'
 import { appStyles, headerStyles, formStyles } from './App.styles'
-import { CLIENT_RENEG_LIMIT } from 'tls'
+import { generateQueryString, getBitlink } from './utils/functions'
+
 class App extends Component {
   state = {
     link: '',
@@ -25,27 +27,30 @@ class App extends Component {
     this.setDateAndTime(this.state.date)
   }
 
-  generateLink = () => {
+  generateLink = async () => {
     const { day, time, timezone } = this.state
     const params = {
       day,
       time,
       timezone
     }
-
-    const queryString = Object.keys(params)
-      .map(key => {
-        return `?${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
-      })
-      .join('&')
-
+    const queryString = generateQueryString(params)
+    const url = `https://timezoner.surge.sh/${queryString}`
+    const options = {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      timeout: 5000
+    }
+    const bitlink = await getBitlink(url, options)
+    console.log(bitlink)
     this.setState({
-      link: `https://timezoner.surge.sh/${queryString}`
+      link: bitlink
     })
   }
 
   handleChange = date => {
-    console.log(date)
     this.setState({
       date,
       link: ''
@@ -57,7 +62,6 @@ class App extends Component {
       day: date.format('YYYY-MM-DD'),
       time: date.format('h:mm a')
     })
-    //check if date has been changed...
   }
 
   render() {

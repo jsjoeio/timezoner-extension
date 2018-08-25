@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { css } from 'emotion'
-import DateTime from 'react-datetime'
+import DateTime, { moment } from 'react-datetime'
 import Button from './components/Button'
 import 'react-datetime/css/react-datetime.css'
 import { appStyles, headerStyles, formStyles } from './App.styles'
@@ -8,7 +8,7 @@ import { CLIENT_RENEG_LIMIT } from 'tls'
 class App extends Component {
   state = {
     link: '',
-    date: new Date(),
+    date: moment(),
     day: '',
     time: '',
     timezone: ''
@@ -19,6 +19,10 @@ class App extends Component {
     this.setState({
       timezone
     })
+  }
+
+  componentDidMount() {
+    this.setDateAndTime(this.state.date)
   }
 
   generateLink = () => {
@@ -41,8 +45,10 @@ class App extends Component {
   }
 
   handleChange = date => {
+    console.log(date)
     this.setState({
-      date
+      date,
+      link: ''
     })
   }
 
@@ -51,6 +57,7 @@ class App extends Component {
       day: date.format('YYYY-MM-DD'),
       time: date.format('h:mm a')
     })
+    //check if date has been changed...
   }
 
   render() {
@@ -73,7 +80,7 @@ class App extends Component {
               />
             </div>
           </form>
-          <Button text="Generate Link" onClick={this.generateLink}/>
+          <Button text="Generate Link" onClick={this.generateLink} />
         </main>
         {link !== '' && (
           <footer>

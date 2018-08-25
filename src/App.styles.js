@@ -2,6 +2,7 @@ import { css } from 'emotion'
 
 export const appStyles = css`
   width: 350px;
+  min-height:350px;
   background-color: #fff;
   text-align: center;
 `

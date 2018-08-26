@@ -4,12 +4,13 @@ import DateTime, { moment } from 'react-datetime'
 
 import Button from './components/Button'
 import 'react-datetime/css/react-datetime.css'
-import { appStyles, headerStyles, formStyles } from './App.styles'
+import { appStyles, headerStyles, formStyles, linkContainerStyles, linkStyles } from './App.styles'
 import { generateQueryString, getBitlink } from './utils/functions'
 
 class App extends Component {
   state = {
     link: '',
+    loading: false,
     date: moment(),
     day: '',
     time: '',
@@ -28,6 +29,11 @@ class App extends Component {
   }
 
   generateLink = async () => {
+
+    this.setState({
+      loading: true
+    })
+
     const { day, time, timezone } = this.state
     const params = {
       day,
@@ -46,7 +52,8 @@ class App extends Component {
     const bitlink = await getBitlink(url, options)
     console.log(bitlink)
     this.setState({
-      link: bitlink
+      link: bitlink,
+      loading: false
     })
   }
 
@@ -65,7 +72,7 @@ class App extends Component {
   }
 
   render() {
-    const { link, date, timezone } = this.state
+    const { link, loading, date, timezone } = this.state
 
     return (
       <div className={appStyles}>
@@ -86,25 +93,18 @@ class App extends Component {
           </form>
           <Button text="Generate Link" onClick={this.generateLink} />
         </main>
-        {link !== '' && (
           <footer>
-            <div
-              className={css`
-                margin: 0 25px;
-              `}
-            >
-              <a
-                href={link}
-                target="_blank"
-                className={css`
-                  word-wrap: break-word;
-                `}
-              >
-                <h4>{link}</h4>
-              </a>
-            </div>
-          </footer>
-        )}
+            {loading && (
+              <p>Loading...</p>
+            )}
+            {link !== '' && !loading && (
+              <div className={linkContainerStyles}>
+                <a href={link} target="_blank" className={linkStyles}>
+                  <h4>{link}</h4>
+                </a>
+              </div>
+            )}
+        </footer>
       </div>
     )
   }

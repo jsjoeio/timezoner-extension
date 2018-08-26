@@ -43,3 +43,13 @@ export const formStyles = css`
     left: -25%;
   }
 `
+
+export const linkContainerStyles = css`
+  margin: 0 25px;
+`
+export const linkStyles = css`
+  word-wrap: break-word;
+  h4 {
+    font-size: 18px;
+  }
+`

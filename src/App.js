@@ -47,7 +47,7 @@ class App extends Component {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      timeout: 5000
+      timeout: 7000
     }
     const bitlink = await getBitlink(url, options)
     console.log(bitlink)

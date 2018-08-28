@@ -33,5 +33,9 @@
       "Firefox ESR",
       "not ie < 11"
     ]
+  },
+  "devDependencies": {
+    "chrome-webstore-upload-cli": "^1.2.0",
+    "zip-folder": "^1.0.0"
   }
 }

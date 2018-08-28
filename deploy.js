@@ -19,11 +19,13 @@ let webstoreLocation = './node_modules/.bin/webstore';
 
 
 zipFolder(folderName, zipName, function(err) {
-    if(err) {
-        console.log('oh no! ', err);
-    } else {
-        console.log(`Successfully zipped the ${folderName} directory and store as ${zipName}`);
-    }
+  if (err) {
+    console.log('oh no!', err);
+    process.exit(1);
+  } else {
+    console.log(`Successfully Zipped ${folder} and saved as ${zipName}`);
+    uploadZip(); // on successful zipping, call upload
+  }
 });
 
 function uploadZip() {

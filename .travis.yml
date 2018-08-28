@@ -5,10 +5,9 @@ cache:
 directories:
   - "node_modules"
 install:
-- yarn install
+  - yarn install
 script:
   - yarn build
-  if: branch = master
-  after_success:
-    script: - CLIENT_ID=${CLIENT_ID} CLIENT_SECRET=${CLIENT_SECRET} EXTENSION_ID=${EXTENSION_ID} REFRESH_TOKEN=${REFRESH_TOKEN} node ./deploy.js
+script:
+  - if [ $TRAVIS_BRANCH = 'master' ]; then CLIENT_ID=${CLIENT_ID} CLIENT_SECRET=${CLIENT_SECRET} EXTENSION_ID=${EXTENSION_ID} REFRESH_TOKEN=${REFRESH_TOKEN} node ./deploy.js; fi
 

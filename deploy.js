@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV === 'local') {
+  require('dotenv').config()
+}
 /*
 Credit goes to Gokul Kathirvel who wrote the tutorial where this code comes from <3
 https://dev.to/gokatz/automate-your-chrome-extension-deployment-in-minutes-48gb

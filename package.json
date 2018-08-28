@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "chrome-webstore-upload-cli": "^1.2.0",
+    "dotenv": "^6.0.0",
     "zip-folder": "^1.0.0"
   }
 }

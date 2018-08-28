@@ -6,7 +6,7 @@ const zipFolder = require('zip-folder')
 const exec      = require('child_process').exec
 
 const folder = 'dist'
-const zipName = 'timezoner-extension.zip'
+const zipName = 'extension.zip'
 
 // credentials and IDs from travis.ci environment
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;

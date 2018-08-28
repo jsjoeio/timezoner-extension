@@ -5,7 +5,7 @@ https://dev.to/gokatz/automate-your-chrome-extension-deployment-in-minutes-48gb
 const zipFolder = require('zip-folder')
 const exec      = require('child_process').exec
 
-const folderName = 'dist'
+const folder = 'dist'
 const zipName = 'timezoner-extension.zip'
 
 // credentials and IDs from travis.ci environment
@@ -18,7 +18,7 @@ const CLIENT_ID = process.env.CLIENT_ID;
 let webstoreLocation = './node_modules/.bin/webstore';
 
 
-zipFolder(folderName, zipName, function(err) {
+zipFolder(folder, zipName, function(err) {
   if (err) {
     console.log('oh no!', err);
     process.exit(1);

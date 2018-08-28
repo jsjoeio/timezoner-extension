@@ -12,10 +12,10 @@ const folder = 'dist'
 const zipName = 'extension.zip'
 
 // credentials and IDs from gitlab-ci.yml file
-let REFRESH_TOKEN = process.env.REFRESH_TOKEN
-let EXTENSION_ID = process.env.EXTENSION_ID
-let CLIENT_SECRET = process.env.CLIENT_SECRET
-let CLIENT_ID = process.env.CLIENT_ID
+let REFRESH_TOKEN = process.env.REFRESH_TOKEN || $REFRESH_TOKEN
+let EXTENSION_ID = process.env.EXTENSION_ID || $EXTENSION_ID
+let CLIENT_SECRET = process.env.CLIENT_SECRET || $CLIENT_SECRET
+let CLIENT_ID = process.env.CLIENT_ID || $CLIENT_ID
 
 // to fetch it from node_modules
 let webstoreLocation = './node_modules/.bin/webstore'

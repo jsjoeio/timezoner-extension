@@ -1,11 +1,33 @@
 import axios from 'axios'
 
+const options = {
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  },
+  timeout: 11000
+}
+
 export const generateQueryString = params => {
   return Object.keys(params)
     .map(key => {
       return `?${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
     })
     .join('&')
+}
+
+export const wakeUpServer = () => {
+  return axios
+    .get(
+      'https://timezoner-server.now.sh/',
+      options
+    )
+    .then(function(response) {
+      return response.data
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
 }
 
 export const getBitlink = (url, options) => {

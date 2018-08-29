@@ -5,7 +5,7 @@ import DateTime, { moment } from 'react-datetime'
 import Button from './components/Button'
 import 'react-datetime/css/react-datetime.css'
 import { appStyles, headerStyles, formStyles, linkContainerStyles, linkStyles } from './App.styles'
-import { generateQueryString, getBitlink } from './utils/functions'
+import { generateQueryString, wakeUpServer, getBitlink } from './utils/functions'
 
 class App extends Component {
   state = {
@@ -18,6 +18,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+    wakeUpServer()
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
     this.setState({
       timezone
@@ -42,15 +43,7 @@ class App extends Component {
     }
     const queryString = generateQueryString(params)
     const url = `https://timezoner.surge.sh/${queryString}`
-    const options = {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      timeout: 7000
-    }
-    const bitlink = await getBitlink(url, options)
-    console.log(bitlink)
+    const bitlink = await getBitlink(url)
     this.setState({
       link: bitlink,
       loading: false

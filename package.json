@@ -15,7 +15,8 @@
     "start": "react-scripts-parcel start",
     "build": "react-scripts-parcel build",
     "test": "react-scripts-parcel test --env=jsdom",
-    "eject": "react-scripts-parcel eject"
+    "eject": "react-scripts-parcel eject",
+    "publish": "CLIENT_ID=${CLIENT_ID} CLIENT_SECRET=${CLIENT_SECRET} EXTENSION_ID=${EXTENSION_ID} REFRESH_TOKEN=${REFRESH_TOKEN} node ./deploy.js"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,5 @@
 # Timezoner Extension
+[![Build Status](https://travis-ci.org/jsjoeio/timezoner-extension.svg?branch=master)](https://travis-ci.org/jsjoeio/timezoner-extension)
 A simple [Chrome extension](https://chrome.google.com/webstore/detail/timezoner/kfnfgcafkeoflpapeniggnnkcaijgbgk) to help you coordinate across timezones. Input the date and time of your event and then we give you a link where others can view the event in their respective timezone. BOOM! Timezoning made easy 👏🏼
 
 ## Getting Started
@@ -33,7 +34,7 @@ yarn start
 
 ![screenshot of timezoner-extension local development](http://res.cloudinary.com/dobfxs62e/image/upload/v1535315564/Timezoner-extension.png)
 
-4. Go off and develop young one. 
+4. Go off and develop young one.
 
 ![happy robert redford](https://media2.giphy.com/media/xSM46ernAUN3y/giphy.gif)
 
@@ -42,12 +43,12 @@ yarn start
 *TODO - currently no tests written*
 
 ## Building
-When you're ready to create a new version to deploy, run: 
+When you're ready to create a new version to deploy, run:
 ```Shell
 yarn build
 ```
 
-This preps your app for deployment. It will create a build directory called `dist`. Compress/zip this folder and upload it to the Chrome Web Store when you need to release a new update. Don't forget to change the version number in the `manifest.json`. 
+This preps your app for deployment. It will create a build directory called `dist`. Compress/zip this folder and upload it to the Chrome Web Store when you need to release a new update. Don't forget to change the version number in the `manifest.json`.
 
 ## Deployment
 
@@ -61,17 +62,17 @@ Unfortunatley, continuous deployment is not set up (it's not an easy task with a
 
 * [React](https://reactjs.org/) - The JavaScript framework used
 * [Parcel](https://parceljs.org/) - application bundler
-* [emotion](https://emotion.sh/) - styling 
+* [emotion](https://emotion.sh/) - styling
 
 ## Contributing
 
-*Coming Soon* - 
+*Coming Soon* -
 
 <!--Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.-->
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. 
+We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 

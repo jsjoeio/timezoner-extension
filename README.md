@@ -1,5 +1,6 @@
 # Timezoner Extension
 [![Build Status](https://travis-ci.org/jsjoeio/timezoner-extension.svg?branch=master)](https://travis-ci.org/jsjoeio/timezoner-extension)
+
 A simple [Chrome extension](https://chrome.google.com/webstore/detail/timezoner/kfnfgcafkeoflpapeniggnnkcaijgbgk) to help you coordinate across timezones. Input the date and time of your event and then we give you a link where others can view the event in their respective timezone. BOOM! Timezoning made easy 👏🏼
 
 ## Getting Started

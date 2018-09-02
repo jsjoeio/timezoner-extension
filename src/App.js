@@ -57,6 +57,10 @@ class App extends Component {
     })
   }
 
+  handleSelectText = () => {
+    window.getSelection().selectAllChildren(document.querySelector('[data-testid="event-link"]'));
+  }
+
   setDateAndTime = date => {
     this.setState({
       day: date.format('YYYY-MM-DD'),
@@ -71,7 +75,7 @@ class App extends Component {
       <div className={appStyles}>
         <header className={headerStyles}>
           <p>Your current timezone is</p>
-          <h2>{timezone}</h2>
+          <h2 data-testid='localized-timezone'>{timezone}</h2>
         </header>
         <main>
           <form className={formStyles}>
@@ -92,9 +96,8 @@ class App extends Component {
             )}
             {link !== '' && !loading && (
               <div className={linkContainerStyles}>
-                <a href={link} target="_blank" className={linkStyles}>
-                  <h4>{link}</h4>
-                </a>
+                <label>️⬇️ Click link to select ⬇️</label>
+                <h4 onClick={this.handleSelectText}data-testid="event-link">{link}</h4>
               </div>
             )}
         </footer>

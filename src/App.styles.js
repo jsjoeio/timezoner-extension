@@ -46,6 +46,15 @@ export const formStyles = css`
 
 export const linkContainerStyles = css`
   margin: 0 25px;
+
+  label {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
+  h4 {
+    margin-top: 5px;
+  }
 `
 export const linkStyles = css`
   word-wrap: break-word;

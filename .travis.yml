@@ -7,6 +7,7 @@ directories:
 install:
   - yarn install
 script:
+  - yarn test
   - yarn build
   - if [ $TRAVIS_BRANCH = 'master' ]; then npm run publish; fi
 

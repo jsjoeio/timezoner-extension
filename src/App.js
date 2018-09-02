@@ -71,7 +71,7 @@ class App extends Component {
       <div className={appStyles}>
         <header className={headerStyles}>
           <p>Your current timezone is</p>
-          <h2>{timezone}</h2>
+          <h2 data-testid='localized-timezone'>{timezone}</h2>
         </header>
         <main>
           <form className={formStyles}>
@@ -93,7 +93,7 @@ class App extends Component {
             {link !== '' && !loading && (
               <div className={linkContainerStyles}>
                 <a href={link} target="_blank" className={linkStyles}>
-                  <h4>{link}</h4>
+                  <h4 data-testid="event-link">{link}</h4>
                 </a>
               </div>
             )}

@@ -53,11 +53,11 @@ This preps your app for deployment. It will create a build directory called `dis
 
 ## Deployment
 
-Unfortunatley, continuous deployment is not set up (it's not an easy task with a Chrome extension). You'll need to go into the Developer Dashboard and do the following:
+There are two ways you can deploy:
+- manually by running the `deploy.js` file
+- merging or pushing changes on the `master` branch
 
-1. Click on 'Timezoner'
-2. Click on 'package'
-3. Click 'Upload updated package' (this is the zip file from earlier).
+Before you do so, make sure to bump the version in the `manifest.json`. In the future, the plan is to automate the version bump.
 
 ## Built With
 

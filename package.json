@@ -7,7 +7,7 @@
     "dotenv-expand": "^4.2.0",
     "emotion": "^9.2.6",
     "moment": "^2.22.2",
-    "react": "^16.4.2",
+    "react": "^16.7.0-alpha.0",
     "react-datetime": "^2.15.0",
     "react-dom": "^16.4.2",
     "react-scripts-parcel": "0.0.24"

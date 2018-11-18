@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { headerStyles } from '../App.styles'
+
 const Header = ({ timezone }) => (
   <header className={headerStyles}>
     <p>Your current timezone is</p>

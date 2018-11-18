@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import { css } from 'emotion'
 import DateTime, { moment } from 'react-datetime'
-import Button from './components/Button'
 import Header from './components/Header'
+import Button from './components/Button'
+import Footer from './components/Footer'
 import { AppWithHooks } from './components/AppWithHooks'
 import 'react-datetime/css/react-datetime.css'
-import {
-  appStyles,
-  formStyles,
-  linkContainerStyles,
-  linkStyles
-} from './App.styles'
+import { appStyles, formStyles } from './App.styles'
 import {
   generateQueryString,
   wakeUpServer,
@@ -99,19 +95,9 @@ class App extends Component {
           <Button text="Generate Link" onClick={this.generateLink} />
         </main>
         <div>
-          <AppWithHooks />
+          <AppWithHooks greeting="Hi there!" />
         </div>
-        <footer>
-          {loading && <p>Loading...</p>}
-          {link !== '' && !loading && (
-            <div className={linkContainerStyles}>
-              <label>️⬇️ Click link to select ⬇️</label>
-              <h4 onClick={this.handleSelectText} data-testid="event-link">
-                {link}
-              </h4>
-            </div>
-          )}
-        </footer>
+        <Footer handleSelectText={this.handleSelectText} loading={loading} link={link} />
       </div>
     )
   }

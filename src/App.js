@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
 import { css } from 'emotion'
 import DateTime, { moment } from 'react-datetime'
-
 import Button from './components/Button'
+import Header from './components/Header'
+import { AppWithHooks } from './components/AppWithHooks'
 import 'react-datetime/css/react-datetime.css'
-import { appStyles, headerStyles, formStyles, linkContainerStyles, linkStyles } from './App.styles'
-import { generateQueryString, wakeUpServer, getBitlink } from './utils/functions'
+import {
+  appStyles,
+  formStyles,
+  linkContainerStyles,
+  linkStyles
+} from './App.styles'
+import {
+  generateQueryString,
+  wakeUpServer,
+  getBitlink
+} from './utils/functions'
 
 class App extends Component {
   state = {
@@ -30,7 +40,6 @@ class App extends Component {
   }
 
   generateLink = async () => {
-
     this.setState({
       loading: true
     })
@@ -58,7 +67,9 @@ class App extends Component {
   }
 
   handleSelectText = () => {
-    window.getSelection().selectAllChildren(document.querySelector('[data-testid="event-link"]'));
+    window
+      .getSelection()
+      .selectAllChildren(document.querySelector('[data-testid="event-link"]'))
   }
 
   setDateAndTime = date => {
@@ -73,10 +84,7 @@ class App extends Component {
 
     return (
       <div className={appStyles}>
-        <header className={headerStyles}>
-          <p>Your current timezone is</p>
-          <h2 data-testid='localized-timezone'>{timezone}</h2>
-        </header>
+        <Header timezone={timezone} />
         <main>
           <form className={formStyles}>
             <div>
@@ -90,16 +98,19 @@ class App extends Component {
           </form>
           <Button text="Generate Link" onClick={this.generateLink} />
         </main>
-          <footer>
-            {loading && (
-              <p>Loading...</p>
-            )}
-            {link !== '' && !loading && (
-              <div className={linkContainerStyles}>
-                <label>️⬇️ Click link to select ⬇️</label>
-                <h4 onClick={this.handleSelectText}data-testid="event-link">{link}</h4>
-              </div>
-            )}
+        <div>
+          <AppWithHooks />
+        </div>
+        <footer>
+          {loading && <p>Loading...</p>}
+          {link !== '' && !loading && (
+            <div className={linkContainerStyles}>
+              <label>️⬇️ Click link to select ⬇️</label>
+              <h4 onClick={this.handleSelectText} data-testid="event-link">
+                {link}
+              </h4>
+            </div>
+          )}
         </footer>
       </div>
     )

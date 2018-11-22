@@ -41,7 +41,7 @@ yarn start
 
 ## Running the tests
 
-*TODO - currently no tests written*
+`npm test`
 
 ## Building
 When you're ready to create a new version to deploy, run:

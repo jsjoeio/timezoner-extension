@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { css } from 'emotion'
-import DateTime, { moment } from 'react-datetime'
+import { moment } from 'react-datetime'
 import Header from './components/Header'
+import Form from './components/Form'
 import Button from './components/Button'
 import Footer from './components/Footer'
-import { AppWithHooks } from './components/AppWithHooks'
 import 'react-datetime/css/react-datetime.css'
 import { appStyles, formStyles } from './App.styles'
 import {
@@ -15,10 +14,11 @@ import {
 
 class App extends Component {
   state = {
-    link: '',
-    loading: false,
+    copied: false,
     date: moment(),
     day: '',
+    link: '',
+    loading: false,
     time: '',
     timezone: ''
   }
@@ -41,12 +41,9 @@ class App extends Component {
     })
 
     const { day, time, timezone } = this.state
-    const params = {
-      day,
-      time,
-      timezone
-    }
-    const queryString = generateQueryString(params)
+
+    // Pass params as an object to generateQueryString
+    const queryString = generateQueryString({ day, time, timezone })
     const url = `https://timezoner.surge.sh/${queryString}`
     const bitlink = await getBitlink(url)
     this.setState({
@@ -58,7 +55,8 @@ class App extends Component {
   handleChange = date => {
     this.setState({
       date,
-      link: ''
+      link: '',
+      copied: false
     })
   }
 
@@ -66,6 +64,10 @@ class App extends Component {
     window
       .getSelection()
       .selectAllChildren(document.querySelector('[data-testid="event-link"]'))
+    document.execCommand('copy')
+    this.setState({
+      copied: true
+    })
   }
 
   setDateAndTime = date => {
@@ -76,28 +78,25 @@ class App extends Component {
   }
 
   render() {
-    const { link, loading, date, timezone } = this.state
+    const { link, loading, date, timezone, copied } = this.state
 
     return (
       <div className={appStyles}>
         <Header timezone={timezone} />
         <main>
-          <form className={formStyles}>
-            <div>
-              <DateTime
-                onChange={this.handleChange}
-                onBlur={this.setDateAndTime}
-                value={date}
-                timeFormat="h:mm a"
-              />
-            </div>
-          </form>
+          <Form
+            handleChange={this.handleChange}
+            setDateAndTime={this.setDateAndTime}
+            date={date}
+          />
           <Button text="Generate Link" onClick={this.generateLink} />
         </main>
-        <div>
-          <AppWithHooks greeting="Hi there!" />
-        </div>
-        <Footer handleSelectText={this.handleSelectText} loading={loading} link={link} />
+        <Footer
+          handleSelectText={this.handleSelectText}
+          loading={loading}
+          link={link}
+          copied={copied}
+        />
       </div>
     )
   }

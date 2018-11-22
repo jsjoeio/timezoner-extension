@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { linkContainerStyles } from '../App.styles'
+import Spinner from './Spinner'
 
-const Footer = ({ handleSelectText, loading, link }) => (
+const Footer = ({ handleSelectText, loading, link, copied }) => (
   <footer>
-    {loading && <p>Loading...</p>}
+    {loading && <Spinner />}
     {link !== '' && !loading && (
       <div className={linkContainerStyles}>
-        <label>️⬇️ Click link to select ⬇️</label>
+        <label>️{copied ? 'Copied! ✅' : '⬇️ Click link to select ⬇️'}</label>
         <h4 onClick={handleSelectText} data-testid="event-link">
           {link}
         </h4>

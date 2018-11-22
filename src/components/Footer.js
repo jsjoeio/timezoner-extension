@@ -7,7 +7,7 @@ const Footer = ({ handleSelectText, loading, link, copied }) => (
     {loading && <Spinner />}
     {link !== '' && !loading && (
       <div className={linkContainerStyles}>
-        <label>️{copied ? 'Copied! ✅' : '⬇️ Click link to copy ⬇️'}</label>
+        <label>️{copied ? 'Copied! ✅' : '⬇️ Click link to copy  ⬇️'}</label>
         <h4 onClick={handleSelectText} data-testid="event-link">
           {link}
         </h4>

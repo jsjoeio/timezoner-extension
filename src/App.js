@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { moment } from 'react-datetime'
+import ErrorBoundary from './components/ErrorBoundary'
 import Header from './components/Header'
 import Form from './components/Form'
 import Button from './components/Button'
@@ -81,23 +82,25 @@ class App extends Component {
     const { link, loading, date, timezone, copied } = this.state
 
     return (
-      <div className={appStyles}>
-        <Header timezone={timezone} />
-        <main>
-          <Form
-            handleChange={this.handleChange}
-            setDateAndTime={this.setDateAndTime}
-            date={date}
+      <ErrorBoundary>
+        <div className={appStyles}>
+          <Header timezone={timezone} />
+          <main>
+            <Form
+              handleChange={this.handleChange}
+              setDateAndTime={this.setDateAndTime}
+              date={date}
+            />
+            <Button onClick={this.generateLink}>Generate Link</Button>
+          </main>
+          <Footer
+            handleSelectText={this.handleSelectText}
+            loading={loading}
+            link={link}
+            copied={copied}
           />
-          <Button text="Generate Link" onClick={this.generateLink} />
-        </main>
-        <Footer
-          handleSelectText={this.handleSelectText}
-          loading={loading}
-          link={link}
-          copied={copied}
-        />
-      </div>
+        </div>
+      </ErrorBoundary>
     )
   }
 }

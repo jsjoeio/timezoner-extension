@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "author": "JavaScript Joe",
   "dependencies": {
+    "@sentry/browser": "^4.4.2",
     "axios": "^0.18.0",
     "emotion": "^9.2.6",
     "moment": "^2.22.2",

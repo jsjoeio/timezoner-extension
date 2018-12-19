@@ -22,9 +22,11 @@ class ErrorBoundary extends Component {
     if (this.state.error) {
       //render fallback UI
       return (
-        <Button onClick={() => Sentry.showReportDialog()}>
-          Report feedback
-        </Button>
+        <div style={{ textAlign: 'center' }}>
+          <Button onClick={() => Sentry.showReportDialog()}>
+            Report feedback
+          </Button>
+        </div>
       )
     } else {
       //when there's not an error, render children untouched

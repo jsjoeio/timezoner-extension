@@ -44,7 +44,7 @@ class App extends Component {
 
     // Pass params as an object to generateQueryString
     const queryString = generateQueryString({ day, time, timezone })
-    const url = `https://timezoner.surge.sh/${queryString}`
+    const url = `https://timezoner.surge.sh/events/${queryString}`
     const bitlink = await getBitlink(url)
     this.setState({
       link: bitlink,

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "JavaScript Joe",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "emotion": "^10.0.23",
     "moment": "^2.22.2",
     "react": "^16.11.0",

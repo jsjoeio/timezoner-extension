@@ -6,34 +6,35 @@
     "axios": "^0.18.0",
     "emotion": "^9.2.6",
     "moment": "^2.22.2",
-    "react": "16.7.0-alpha.0",
+    "react": "^16.11.0",
     "react-datetime": "^2.15.0",
-    "react-dom": "16.7.0-alpha.0",
-    "react-scripts-parcel": "0.0.24"
+    "react-dom": "^16.11.0",
+    "react-scripts": "^3.2.0"
   },
   "scripts": {
-    "start": "react-scripts-parcel start",
-    "build": "react-scripts-parcel build",
-    "test": "react-scripts-parcel test --env=jsdom",
-    "eject": "react-scripts-parcel eject",
-    "publish": "CLIENT_ID=${CLIENT_ID} CLIENT_SECRET=${CLIENT_SECRET} EXTENSION_ID=${EXTENSION_ID} REFRESH_TOKEN=${REFRESH_TOKEN} node ./deploy.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jsjoeio/timezoner-extension"
-  },
-  "browserslist": {
-    "development": [
-      "last 2 chrome versions",
-      "last 2 firefox versions",
-      "last 2 edge versions"
-    ],
-    "production": [
-      ">1%",
-      "last 4 versions",
-      "Firefox ESR",
-      "not ie < 11"
-    ]
   },
   "devDependencies": {
     "chrome-webstore-upload-cli": "^1.2.0",

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { moment } from 'react-datetime'
 import Header from './components/Header'
 import Form from './components/Form'
@@ -12,94 +12,64 @@ import {
   getBitlink
 } from './utils/functions'
 
-class App extends Component {
-  state = {
-    copied: false,
-    date: moment(),
-    day: '',
-    link: '',
-    loading: false,
-    time: '',
-    timezone: ''
-  }
+const App = () => {
+  const currentMoment = moment()
 
-  componentWillMount() {
+  /* STATE VALUES */
+  const [timezone, setTimezone] = useState('America/Phoenix')
+  const [date, setDate] = useState(currentMoment)
+  const [link, setLink] = useState('')
+  const [copied, setCopied] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
     wakeUpServer()
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
-    this.setState({
-      timezone
-    })
-  }
+    const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    setTimezone(currentTimezone)
+  }, [])
 
-  componentDidMount() {
-    this.setDateAndTime(this.state.date)
-  }
-
-  generateLink = async () => {
-    this.setState({
-      loading: true
-    })
-
-    const { day, time, timezone } = this.state
+  const generateLink = async () => {
+    const day = date.format('YYYY-MM-DD')
+    const time = date.format('h:mm a')
+    setLoading(true)
 
     // Pass params as an object to generateQueryString
     const queryString = generateQueryString({ day, time, timezone })
     const url = `https://timezoner.surge.sh/events/${queryString}`
     const bitlink = await getBitlink(url)
-    this.setState({
-      link: bitlink,
-      loading: false
-    })
+    setLink(bitlink)
+    setLoading(false)
   }
 
-  handleChange = date => {
-    this.setState({
-      date,
-      link: '',
-      copied: false
-    })
+  const handleChange = date => {
+    setDate(date)
+    setLink('')
+    setCopied(false)
   }
 
-  handleSelectText = () => {
+  const handleSelectText = () => {
     window
       .getSelection()
       .selectAllChildren(document.querySelector('[data-testid="event-link"]'))
     document.execCommand('copy')
-    this.setState({
-      copied: true
-    })
+    setCopied(true)
   }
 
-  setDateAndTime = date => {
-    this.setState({
-      day: date.format('YYYY-MM-DD'),
-      time: date.format('h:mm a')
-    })
-  }
-
-  render() {
-    const { link, loading, date, timezone, copied } = this.state
-
-    return (
-      <div className={appStyles}>
-        <Header timezone={timezone} />
-        <main>
-          <Form
-            handleChange={this.handleChange}
-            setDateAndTime={this.setDateAndTime}
-            date={date}
-          />
-          <Button text="Generate Link" onClick={this.generateLink} />
-        </main>
-        <Footer
-          handleSelectText={this.handleSelectText}
-          loading={loading}
-          link={link}
-          copied={copied}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className={appStyles}>
+      <Header timezone={timezone} />
+      <main>
+        <Form handleChange={handleChange} date={date} />
+        <Button text="Generate Link" onClick={generateLink} />
+      </main>
+      <Footer
+        handleSelectText={handleSelectText}
+        loading={loading}
+        link={link}
+        copied={copied}
+      />
+    </div>
+  )
 }
 
 export default App

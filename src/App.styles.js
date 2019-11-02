@@ -1,8 +1,8 @@
-import { css } from 'emotion'
+import { css } from 'emotion/macro'
 
 export const appStyles = css`
   width: 350px;
-  min-height:350px;
+  min-height: 350px;
   background-color: #fff;
   text-align: center;
 `

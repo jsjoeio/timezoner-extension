@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "author": "JavaScript Joe",
   "dependencies": {
-    "@emotion/core": "^10.0.22",
     "axios": "^0.18.0",
-    "emotion": "^9.2.6",
+    "emotion": "^10.0.23",
     "moment": "^2.22.2",
     "react": "^16.11.0",
     "react-datetime": "^2.15.0",

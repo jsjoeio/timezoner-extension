@@ -1,4 +1,5 @@
-import { css } from 'emotion'
+import { css } from 'emotion/macro'
+
 export const buttonStyles = css`
   background: linear-gradient(
     0deg,

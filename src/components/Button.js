@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { buttonStyles } from './Button.styles'
 
 const Button = ({ onClick, text }) => (

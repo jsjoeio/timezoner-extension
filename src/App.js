@@ -5,7 +5,7 @@ import Form from './components/Form'
 import Button from './components/Button'
 import Footer from './components/Footer'
 import 'react-datetime/css/react-datetime.css'
-import { appStyles, formStyles } from './App.styles'
+import { appStyles } from './App.styles'
 import {
   generateQueryString,
   wakeUpServer,

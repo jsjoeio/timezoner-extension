@@ -3,6 +3,8 @@
 
 A simple [Chrome extension](https://chrome.google.com/webstore/detail/timezoner/kfnfgcafkeoflpapeniggnnkcaijgbgk) to help you coordinate across timezones. Input the date and time of your event and then we give you a link where others can view the event in their respective timezone. BOOM! Timezoning made easy 👏🏼
 
+(Firefox coming soon!)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Timezoner",
-  "version": "1.0.0.2",
+  "version": "1.0.0.3",
   "description": "A simple extension to help you coordinate across timezones",
   "icons": {
     "16": "icon16.png",

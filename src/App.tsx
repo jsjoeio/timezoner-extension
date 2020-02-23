@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+// @ts-ignore
 import { moment } from 'react-datetime'
 import Header from './components/Header'
 import Form from './components/Form'

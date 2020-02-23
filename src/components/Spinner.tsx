@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Spinner = () => (
+const Spinner: React.FC = () => (
   // By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL
   <svg
     width="38"

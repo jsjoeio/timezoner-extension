@@ -42,6 +42,7 @@
     "url": "https://github.com/jsjoeio/timezoner-extension"
   },
   "devDependencies": {
+    "@types/moment": "^2.13.0",
     "chrome-webstore-upload-cli": "^1.2.0",
     "dotenv": "^6.0.0",
     "dotenv-expand": "^4.2.0",

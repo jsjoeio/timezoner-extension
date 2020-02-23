@@ -2,7 +2,19 @@ import React from 'react'
 import { linkContainerStyles } from '../App.styles'
 import Spinner from './Spinner'
 
-const Footer = ({ handleSelectText, loading, link, copied }) => (
+type Props = {
+  handleSelectText: () => void
+  loading: boolean
+  link: string
+  copied: boolean
+}
+
+const Footer: React.FC<Props> = ({
+  handleSelectText,
+  loading,
+  link,
+  copied
+}) => (
   <footer>
     {loading && <Spinner />}
     {link !== '' && !loading && (

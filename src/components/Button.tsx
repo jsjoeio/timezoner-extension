@@ -1,7 +1,12 @@
 import React from 'react'
 import { buttonStyles } from './Button.styles'
 
-const Button = ({ onClick, text }) => (
+type Props = {
+  onClick: () => void
+  text: string
+}
+
+const Button: React.FC<Props> = ({ onClick, text }) => (
   <button onClick={onClick} className={buttonStyles}>
     {text}
   </button>

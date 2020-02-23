@@ -18,10 +18,7 @@ export const generateQueryString = params => {
 
 export const wakeUpServer = () => {
   return axios
-    .get(
-      'https://timezoner-server.now.sh/',
-      options
-    )
+    .get('https://timezoner-server.now.sh/', options)
     .then(function(response) {
       return response.data
     })
@@ -30,7 +27,7 @@ export const wakeUpServer = () => {
     })
 }
 
-export const getBitlink = (url, options) => {
+export const getBitlink = (url: string, options?: {}) => {
   return axios
     .post(
       'https://timezoner-server.now.sh/api/bitly/',

@@ -12,6 +12,7 @@ import {
   wakeUpServer,
   getBitlink
 } from './utils/functions'
+import { Moment } from 'moment'
 
 const App = () => {
   const currentMoment = moment()
@@ -42,18 +43,20 @@ const App = () => {
     setLoading(false)
   }
 
-  const handleChange = date => {
+  const handleChange = (date: Moment | string) => {
     setDate(date)
     setLink('')
     setCopied(false)
   }
 
   const handleSelectText = () => {
-    window
-      .getSelection()
-      .selectAllChildren(document.querySelector('[data-testid="event-link"]'))
-    document.execCommand('copy')
-    setCopied(true)
+    const eventLink = document.querySelector('[data-testid="event-link"]')
+    // Check that event link exists first
+    if (eventLink !== null) {
+      window?.getSelection()?.selectAllChildren(eventLink)
+      document.execCommand('copy')
+      setCopied(true)
+    }
   }
 
   return (

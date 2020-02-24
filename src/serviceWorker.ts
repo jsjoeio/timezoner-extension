@@ -8,6 +8,8 @@
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
 
+export type FixMeLater = any
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -18,7 +20,7 @@ const isLocalhost = Boolean(
     )
 )
 
-export function register(config) {
+export function register(config: FixMeLater) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     //@ts-ignore
@@ -53,34 +55,36 @@ export function register(config) {
   }
 }
 
-function registerValidSW(swUrl, config) {
+function registerValidSW(swUrl: string, config: FixMeLater) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing
-        installingWorker.onstatechange = () => {
-          if (installingWorker.state === 'installed') {
-            if (navigator.serviceWorker.controller) {
-              // At this point, the old content will have been purged and
-              // the fresh content will have been added to the cache.
-              // It's the perfect time to display a "New content is
-              // available; please refresh." message in your web app.
-              console.log('New content is available; please refresh.')
+        if (installingWorker !== null) {
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed') {
+              if (navigator.serviceWorker.controller) {
+                // At this point, the old content will have been purged and
+                // the fresh content will have been added to the cache.
+                // It's the perfect time to display a "New content is
+                // available; please refresh." message in your web app.
+                console.log('New content is available; please refresh.')
 
-              // Execute callback
-              if (config.onUpdate) {
-                config.onUpdate(registration)
-              }
-            } else {
-              // At this point, everything has been precached.
-              // It's the perfect time to display a
-              // "Content is cached for offline use." message.
-              console.log('Content is cached for offline use.')
+                // Execute callback
+                if (config.onUpdate) {
+                  config.onUpdate(registration)
+                }
+              } else {
+                // At this point, everything has been precached.
+                // It's the perfect time to display a
+                // "Content is cached for offline use." message.
+                console.log('Content is cached for offline use.')
 
-              // Execute callback
-              if (config.onSuccess) {
-                config.onSuccess(registration)
+                // Execute callback
+                if (config.onSuccess) {
+                  config.onSuccess(registration)
+                }
               }
             }
           }
@@ -92,14 +96,14 @@ function registerValidSW(swUrl, config) {
     })
 }
 
-function checkValidServiceWorker(swUrl, config) {
+function checkValidServiceWorker(swUrl: string, config: FixMeLater) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
         response.status === 404 ||
-        response.headers.get('content-type').indexOf('javascript') === -1
+        response?.headers?.get('content-type')?.indexOf('javascript') === -1
       ) {
         // No service worker found. Probably a different app. Reload the page.
         navigator.serviceWorker.ready.then(registration => {

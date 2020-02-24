@@ -8,7 +8,11 @@ const options = {
   timeout: 11000
 }
 
-export const generateQueryString = params => {
+interface Params {
+  [key: string]: string
+}
+
+export const generateQueryString = (params: Params) => {
   return Object.keys(params)
     .map(key => {
       return `?${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`

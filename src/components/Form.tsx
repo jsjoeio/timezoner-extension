@@ -4,15 +4,16 @@ import DateTime from 'react-datetime'
 import { Moment } from 'moment'
 
 type Props = {
-  handleChange: () => void,
+  handleChange: (date: string | Moment) => void
   date: Moment
 }
 
-const Form = ({ handleChange, date }) => (
+const Form: React.FC<Props> = ({ handleChange, date }) => (
   <form className={formStyles}>
     <div>
       <DateTime
         onChange={handleChange}
+        // @ts-ignore
         onBlur={handleChange}
         value={date}
         timeFormat="h:mm a"

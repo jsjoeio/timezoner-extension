@@ -12,6 +12,7 @@ import {
   wakeUpServer,
   getBitlink
 } from './utils/functions'
+import { Moment } from 'moment'
 
 const App = () => {
   const currentMoment = moment()
@@ -42,7 +43,7 @@ const App = () => {
     setLoading(false)
   }
 
-  const handleChange = date => {
+  const handleChange = (date: Moment | string) => {
     setDate(date)
     setLink('')
     setCopied(false)

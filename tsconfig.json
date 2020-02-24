@@ -1,9 +1,5 @@
 {
-  "exclude": [
-    "node_modules",
-    "build",
-    "public"
-  ],
+  "exclude": ["node_modules", "build", "public"],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
@@ -14,17 +10,13 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
